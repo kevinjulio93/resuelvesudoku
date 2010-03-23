@@ -17,6 +17,8 @@ public class Sudoku {
         new TrioDesnudo(),
         new CuartetoDesnudo(),
         new ParOculto(),
+        //new TrioOculto(),
+        new XWing(),
     };
 
     int casillasToResolver=9*9;
