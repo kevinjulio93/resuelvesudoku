@@ -44,9 +44,18 @@ public class XWing extends BasicResolver {
                                     if (clinea == 0) {
                                         // Check Columnas
                                         if ((e2.getColumna() == e22.getColumna() && e1.getColumna() == e21.getColumna())||
-                                                (e2.getColumna() == e21.getColumna() && e1.getColumna() == e22.getColumna())){
+                                                (e2.getColumna() == e21.getColumna() && e1.getColumna() == e22.getColumna())) {
                                             // Borramos valores de columnas
-                                           // for (Escaque e:)
+                                            for (Escaque e : allOfLines[1][e2.getColumna()]) {
+                                                if (isValid(e, e1, e2, e21, e22, v-1)) {
+                                                    mergueToSolution(mpSolucion, e, v);
+                                                }
+                                            }
+                                            for (Escaque e : allOfLines[1][e1.getColumna()]) {
+                                                if (isValid(e, e1, e2, e21, e22, v-1)) {
+                                                    mergueToSolution(mpSolucion, e, v);
+                                                }
+                                            }
 
                                         }
                                     } else {
@@ -54,6 +63,16 @@ public class XWing extends BasicResolver {
                                         if ((e2.getFila() == e22.getFila() && e1.getFila() == e21.getFila())||
                                                 (e2.getFila() == e21.getFila() && e1.getFila() == e22.getFila())){
                                             
+                                            for (Escaque e : allOfLines[0][e2.getFila()]) {
+                                                if (isValid(e, e1, e2, e21, e22, v-1)) {
+                                                    mergueToSolution(mpSolucion, e, v);
+                                                }
+                                            }
+                                            for (Escaque e : allOfLines[0][e1.getFila()]) {
+                                                if (isValid(e, e1, e2, e21, e22, v-1)) {
+                                                    mergueToSolution(mpSolucion, e, v);
+                                                }
+                                            }
                                         }
 
                                     }
@@ -71,6 +90,10 @@ public class XWing extends BasicResolver {
             }
         }
         return mpSolucion;
+    }
+
+    private boolean isValid(Escaque e, Escaque e1, Escaque e2, Escaque e21, Escaque e22, int i) {
+        return (!e.isAsignada() && e!=e1 && e!=e2 && e!=e21 && e!=e22 && (e.getValorPosible().getValue()&(1<<i))>0);
     }
 
 }
