@@ -1,0 +1,1 @@
+Harto de quedarte bloqueado resolviendo sudokus? Este programa te enseña por donde seguir. Las técnicas de resolucion las he sacado de SudokuMania, y he mantenido sus nombres.
